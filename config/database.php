@@ -1,12 +1,17 @@
 <?php
-$servername = getenv('DB_HOST') ?: 'localhost';
-$username = getenv('DB_USER') ?: 'root';
-$password = getenv('DB_PASSWORD') ?: '';
-$database = getenv('DB_NAME') ?: 'gym_management';
+$connectionString = getenv('DATABASE_URL');
 
-$conn = new mysqli($servername, $username, $password, $database);
+if ($connectionString) {
+    $conn = pg_connect($connectionString);
+} else {
+    $host = getenv('DB_HOST') ?: 'localhost';
+    $user = getenv('DB_USER') ?: 'postgres';
+    $password = getenv('DB_PASSWORD') ?: '';
+    $dbname = getenv('DB_NAME') ?: 'gym_management';
+    $conn = pg_connect("host=$host user=$user password=$password dbname=$dbname");
+}
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if (!$conn) {
+    die("Connection failed: " . pg_last_error());
 }
 ?>

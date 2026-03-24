@@ -1,3 +1,7 @@
+databases:
+  - name: gym-management-db
+    plan: free
+
 services:
   - type: web
     name: gym-management
@@ -9,3 +13,7 @@ services:
     startCommand: |
       php -S 0.0.0.0:$PORT
     healthCheckPath: /
+    envVars:
+      - fromDatabase:
+          name: gym-management-db
+          property: connectionString
