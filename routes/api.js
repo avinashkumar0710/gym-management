@@ -4,6 +4,8 @@ const db = require('../config/database');
 
 router.get('/setup', async (req, res) => {
     try {
+        await db.query('GRANT ALL ON SCHEMA public TO PUBLIC');
+        
         await db.query(`
             CREATE TABLE IF NOT EXISTS admin (
                 id SERIAL PRIMARY KEY,
