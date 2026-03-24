@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitZone Gym - Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/"><i class="fas fa-dumbbell"></i> FitZone Gym</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/#plans">Plans</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+                    <li class="nav-item"><a class="btn btn-primary ml-2" href="/admin/login">Join Now</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Transform Your Body, Transform Your Life</h1>
+            <p>Join FitZone Gym today and start your fitness journey</p>
+            <a href="/admin/login" class="btn btn-primary btn-lg">Get Started</a>
+        </div>
+    </header>
+
+    <section class="features py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Why Choose Us</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-card text-center p-4">
+                        <i class="fas fa-clock fa-3x mb-3"></i>
+                        <h4>24/7 Access</h4>
+                        <p>Train anytime with round-the-clock gym access</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center p-4">
+                        <i class="fas fa-users fa-3x mb-3"></i>
+                        <h4>Expert Trainers</h4>
+                        <p>Professional trainers to guide your fitness journey</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center p-4">
+                        <i class="fas fa-heartbeat fa-3x mb-3"></i>
+                        <h4>Modern Equipment</h4>
+                        <p>State-of-the-art equipment for optimal results</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="plans" class="plans py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Membership Plans</h2>
+            <div class="row">
+                <% if(plans && plans.length > 0) { %>
+                    <% plans.forEach(plan => { %>
+                        <div class="col-md-4 mb-4">
+                            <div class="plan-card text-center p-4">
+                                <h3><%= plan.name %></h3>
+                                <p class="price">$<%= parseFloat(plan.price).toFixed(2) %></p>
+                                <p class="duration"><%= plan.duration %> Days</p>
+                                <p class="description"><%= plan.description || '' %></p>
+                                <a href="/admin/login" class="btn btn-outline-primary">Choose Plan</a>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <div class="col-md-4 mb-4">
+                        <div class="plan-card text-center p-4">
+                            <h3>Basic</h3>
+                            <p class="price">$29.99</p>
+                            <p class="duration">30 Days</p>
+                            <p class="description">Perfect for beginners</p>
+                            <a href="/admin/login" class="btn btn-outline-primary">Choose Plan</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="plan-card text-center p-4">
+                            <h3>Standard</h3>
+                            <p class="price">$79.99</p>
+                            <p class="duration">90 Days</p>
+                            <p class="description">Most popular choice</p>
+                            <a href="/admin/login" class="btn btn-outline-primary">Choose Plan</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="plan-card text-center p-4">
+                            <h3>Premium</h3>
+                            <p class="price">$249.99</p>
+                            <p class="duration">365 Days</p>
+                            <p class="description">Ultimate membership</p>
+                            <a href="/admin/login" class="btn btn-outline-primary">Choose Plan</a>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Our Facility</h2>
+            <div class="row">
+                <div class="col-md-3 col-6 mb-3">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=400" alt="Gym Equipment" class="img-fluid rounded">
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=400" alt="Weight Training" class="img-fluid rounded">
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400" alt="Group Classes" class="img-fluid rounded">
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=400" alt="Cardio Zone" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>FitZone Gym</h4>
+                    <p>Transforming lives through fitness since 2010</p>
+                </div>
+                <div class="col-md-4">
+                    <h4>Quick Links</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="/" class="text-white">Home</a></li>
+                        <li><a href="/about" class="text-white">About</a></li>
+                        <li><a href="/contact" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Fitness Street, Gym City</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@fitzone.com</p>
+                </div>
+            </div>
+            <hr>
+            <p class="text-center">&copy; 2024 FitZone Gym. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,13 +1,16 @@
-FROM php:8.2-apache
+# Build from base node image
+FROM node:18-alpine
 
-# Install PDO MySQL extension
-RUN docker-php-ext-install pdo pdo_mysql
+WORKDIR /app
 
-# Enable Apache mod_rewrite
-RUN a2enmod rewrite
+COPY package*.json ./
 
-# Copy application files
-COPY . /var/www/html/
+RUN npm install --production
 
-# Set permissions
-RUN chown -R www-data:www-data /var/www/html
+COPY . .
+
+ENV PORT=3000
+
+EXPOSE 3000
+
+CMD ["node", "server.js"]
