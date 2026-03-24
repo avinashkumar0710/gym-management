@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../config/database');
 
-router.post('/setup', async (req, res) => {
+router.get('/setup', async (req, res) => {
     try {
         await db.query(`
             CREATE TABLE IF NOT EXISTS admin (
