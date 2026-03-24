@@ -1,22 +1,11 @@
-database:
-  plan: free
-  name: gym_management
-  database_user: gym_user
-  database_password: gym_secure_password_123
-
 services:
   - type: web
     name: gym-management
     env: php
     region: oregon
     plan: free
-    database:
-      name: gym_management
-      database_user: gym_user
-      database_password: gym_secure_password_123
     buildCommand: |
       # No build needed for PHP
     startCommand: |
-      # Start PHP built-in server
       php -S 0.0.0.0:$PORT
     healthCheckPath: /
